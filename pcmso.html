@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - PCMSO</title>
+    <style>
+        :root { --bg: #0a0b10; --cyan: #00e5ff; --surf: #161b22; }
+        body { background: var(--bg); color: white; font-family: sans-serif; padding: 20px; }
+        .header { border-bottom: 2px solid var(--cyan); padding-bottom: 15px; margin-bottom: 25px; color: var(--cyan); font-family: 'Orbitron'; }
+        .card { background: var(--surf); padding: 20px; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; }
+        .indicator { color: var(--cyan); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">PCMSO - NR-07</div>
+    <div class="card">
+        <p><strong>Unidade Operacional:</strong> <span id="empresaPcmso" class="indicator"></span></p>
+        <p><strong>Grau de Risco Vinculado:</strong> <span id="riscoPcmso" class="indicator"></span></p>
+    </div>
+
+    <div class="card">
+        <h3>Cronograma de Exames</h3>
+        <ul id="listaExames" style="list-style: none; padding: 0;">
+            <li style="padding: 10px 0; border-bottom: 1px solid #222;">🔬 Hemograma Completo (Anual)</li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #222;">🎧 Audiometria (NR-07 Quadro II)</li>
+        </ul>
+    </div>
+    <button onclick="alert('PCMSO Gerado e pronto para o Médico do Trabalho assinar digitalmente.')" style="width:100%; padding:20px; background:var(--cyan); color:black; border:none; border-radius:10px; font-weight:bold; font-family:'Orbitron';">GERAR PCMSO PADRÃO OURO</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) {
+                document.getElementById('empresaPcmso').innerText = data.nome;
+                document.getElementById('riscoPcmso').innerText = data.risco;
+            }
+        }
+    </script>
+</body>
+</html>

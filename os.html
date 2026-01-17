@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Ordem de Serviço NR-01</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --yellow: #f1e05a; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--yellow); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; color: var(--yellow); font-size: 1.2rem; }
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        textarea { width: 100%; background: #0d1117; border: 1px solid #333; color: white; padding: 10px; border-radius: 8px; box-sizing: border-box; }
+        .btn-os { background: var(--yellow); color: black; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / O.S. DIGITAL</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Colaborador e Riscos</h3>
+        <input type="text" id="empresaOs" readonly style="width:100%; background:transparent; border:none; color:var(--yellow); font-weight:bold; margin-bottom:10px;">
+        <input type="text" placeholder="Nome do Funcionário" style="width:100%; padding:10px; margin-bottom:10px; background:#000; color:white; border:1px solid #333;">
+        <label style="font-size:0.7rem;">Riscos Identificados (PGR):</label>
+        <textarea id="riscosOs" rows="3" readonly></textarea>
+    </div>
+
+    <div class="card" style="font-size: 0.7rem; border-color: #555;">
+        <p>Declaro estar ciente dos riscos e obrigações de segurança, sujeito a sanções disciplinares em caso de descumprimento.</p>
+    </div>
+
+    <button class="btn-os" onclick="alert('Ordem de Serviço gerada e enviada para assinatura digital.')">EMITIR O.S.</button>
+
+    <script>
+        window.onload = () => {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) {
+                document.getElementById('empresaOs').value = data.razao;
+                document.getElementById('riscosOs').value = data.riscosBase;
+            }
+        }
+    </script>
+</body>
+</html>

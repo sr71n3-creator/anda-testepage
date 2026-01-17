@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - PGRTR (NR-31)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a100a; --surf: #162216; --border: #303d30; --neon-rural: #76ff03; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--neon-rural); padding: 15px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { font-family: 'Orbitron'; color: var(--neon-rural); font-size: 1.1rem; }
+        .card { background: var(--surf); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        label { font-size: 0.7rem; display: block; margin-bottom: 5px; color: var(--neon-rural); font-weight: bold; }
+        select, input { width: 100%; padding: 12px; background: #000; border: 1px solid var(--border); color: white; border-radius: 8px; margin-bottom: 10px; }
+        .btn-rural { background: var(--neon-rural); color: black; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><div class="title">PGRTR - RURAL</div><small>NR-31 - Gestão no Campo</small></div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <label>GESTÃO DE AGROTÓXICOS</label>
+        <select>
+            <option>Classe I - Extremamente Tóxico</option>
+            <option>Classe II - Altamente Tóxico</option>
+            <option>Classe III - Mediamente Tóxico</option>
+        </select>
+        <label style="margin-top:10px;">Período de Carência (Horas)</label>
+        <input type="number" placeholder="Ex: 24">
+    </div>
+
+    <div class="card">
+        <label>SEGURANÇA EM MÁQUINAS (TRATORES)</label>
+        <div style="font-size: 0.8rem;">
+            <input type="checkbox"> Estrutura de Proteção na Capotagem (EPC)<br>
+            <input type="checkbox"> Proteção de TDP (Tomada de Potência)<br>
+            <input type="checkbox"> Acesso (Escadas e Corrimãos)
+        </div>
+    </div>
+
+    <button class="btn-rural" onclick="alert('PGRTR Rural Finalizado!')">SALVAR PGRTR</button>
+</body>
+</html>

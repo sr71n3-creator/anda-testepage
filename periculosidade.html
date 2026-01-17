@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Laudo de Periculosidade NR-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #221010; --border: #441111; --neon-per: #ff0000; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--neon-per); padding: 15px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { font-family: 'Orbitron'; color: var(--neon-per); font-size: 1.2rem; text-shadow: 0 0 10px rgba(255,0,0,0.3); }
+        .card { background: var(--surf); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        label { font-size: 0.7rem; color: var(--neon-per); display: block; margin-bottom: 5px; font-weight: bold; }
+        select, textarea, input { width: 100%; padding: 12px; background: #000; border: 1px solid var(--border); color: white; border-radius: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        .btn-gen { background: var(--neon-per); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><div class="title">PERICULOSIDADE</div><small>NR-16 - Risco de Morte</small></div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <label>EMPRESA</label>
+        <input type="text" id="empresaNome" readonly>
+        <label>ENQUADRAMENTO TÉCNICO</label>
+        <select id="enquadramento">
+            <option>Explosivos</option>
+            <option>Inflamáveis (Líquidos/Gasosos)</option>
+            <option>Energia Elétrica (S.E.P.)</option>
+            <option>Motociclistas (Uso Profissional)</option>
+            <option>Segurança Pessoal/Patrimonial</option>
+        </select>
+        <label>DESCRIÇÃO DA ÁREA DE RISCO</label>
+        <textarea rows="3" placeholder="Ex: Tanques de combustível, subestação elétrica..."></textarea>
+    </div>
+
+    <div class="card">
+        <label>PARECER DO ENGENHEIRO</label>
+        <select id="conclusao">
+            <option>ATIVIDADE PERIGOSA (Adicional Devido)</option>
+            <option>ATIVIDADE NÃO PERIGOSA</option>
+        </select>
+    </div>
+
+    <button class="btn-gen" onclick="gerarLaudo()">EMITIR LAUDO NR-16</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaNome').value = data.razao;
+        };
+        function gerarLaudo() { alert("Laudo de Periculosidade estruturado com sucesso!"); }
+    </script>
+</body>
+</html>

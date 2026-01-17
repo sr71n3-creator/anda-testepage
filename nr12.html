@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - NR-12 Inventário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #1e1e1e; --yellow: #ffcc00; --text: #eee; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--yellow); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; color: var(--yellow); font-size: 1.2rem; }
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        input[type="text"] { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: white; border-radius: 8px; margin: 10px 0; }
+        .btn-add { background: var(--yellow); color: black; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / NR-12</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Inventário de Máquina</h3>
+        <input type="text" placeholder="Nome/Tag da Máquina (Ex: Prensa P-01)">
+        <input type="text" placeholder="Fabricante / Ano">
+        <label>Dispositivos de Segurança:</label>
+        <div style="margin-top:10px; font-size:0.8rem;">
+            <input type="checkbox"> Emergência <br>
+            <input type="checkbox"> Cortina de Luz <br>
+            <input type="checkbox"> Proteção Fixa
+        </div>
+    </div>
+
+    <button class="btn-add" onclick="alert('Máquina registrada no Inventário PGR')">CADASTRAR EQUIPAMENTO</button>
+</body>
+</html>

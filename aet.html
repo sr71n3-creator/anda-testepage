@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - A.E.T. Ergonomia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --primary: #00d4ff; --purple: #bd34fe; --green: #00ff9d; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding: 15px; }
+        
+        .header { border-bottom: 2px solid var(--primary); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo-small { font-family: 'Orbitron'; font-size: 1.2rem; background: linear-gradient(90deg, var(--purple), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        h3 { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+        
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; background: #0d1117; border: 1px solid #333; color: white; border-radius: 8px; box-sizing: border-box; }
+        
+        .btn-save { background: linear-gradient(90deg, var(--primary), #0088ff); color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; margin-top: 20px; box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-small">ANDA / A.E.T.</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ VOLTAR</a>
+    </div>
+
+    <div class="card">
+        <h3>Posto de Trabalho Avaliado</h3>
+        <input type="text" id="empresaAet" readonly style="border-color: var(--green); color: var(--green);">
+        <input type="text" placeholder="Setor (Ex: Produção / Almoxarifado)">
+        <textarea rows="3" placeholder="Descrição da Atividade e Posturas Observadas..."></textarea>
+    </div>
+
+    <div class="card">
+        <h3>Avaliação Biomecânica</h3>
+        <label>Carga Física:</label>
+        <select><option>Baixa - Sem risco</option><option>Moderada - Monitorar</option><option>Crítica - Requer ajuste</option></select>
+        <label>Esforço Cognitivo:</label>
+        <select><option>Baixa Pressão</option><option>Alta Concentração</option><option>Stress Ocupacional</option></select>
+    </div>
+
+    <button class="btn-save" onclick="alert('Análise Ergonômica salva com Sucesso!')">FINALIZAR LAUDO NR-17</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaAet').value = data.nome;
+        }
+    </script>
+</body>
+</html>

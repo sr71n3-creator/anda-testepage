@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - NR-20 Prontuário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #221a16; --flame: #ff5f00; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--flame); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; color: var(--flame); font-size: 1.2rem; }
+        .card { background: var(--surf); border: 1px solid #4d2a21; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        .btn-gen { background: var(--flame); color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / NR-20</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Classificação de Instalação</h3>
+        <select style="width:100%; padding:12px; background:#000; color:white; border:1px solid #4d2a21;">
+            <option>Classe I - Postos de Serviço / Engarrafadoras</option>
+            <option>Classe II - Usinas / Refinarias</option>
+            <option>Classe III - Tanques de Armazenamento Grande Porte</option>
+        </select>
+        <input type="text" placeholder="Volume Total Armazenado (m³)" style="width:100%; padding:12px; margin-top:10px; background:#000; border:1px solid #4d2a21; color:white;">
+    </div>
+
+    <button class="btn-gen" onclick="alert('Prontuário NR-20 Atualizado!')">GERAR PRONTUÁRIO</button>
+</body>
+</html>

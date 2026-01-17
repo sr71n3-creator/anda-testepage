@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Inventário de Riscos</title>
+    <style>
+        :root { --bg: #0a0b10; --green: #00ff9d; --red: #ff3e3e; --surf: #161b22; }
+        body { background: var(--bg); color: white; font-family: sans-serif; padding: 15px; }
+        .table-box { background: var(--surf); border-radius: 10px; overflow-x: auto; border: 1px solid #333; }
+        table { width: 100%; border-collapse: collapse; min-width: 400px; }
+        th { background: #21262d; color: var(--green); padding: 10px; font-size: 0.7rem; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #333; font-size: 0.8rem; }
+        .badge { padding: 3px 6px; border-radius: 4px; font-weight: bold; font-size: 0.6rem; }
+        .high { background: var(--red); color: white; }
+    </style>
+</head>
+<body>
+    <h2 style="color: var(--green); font-family: 'Orbitron'; font-size: 1rem;">INVENTÁRIO DE RISCOS - <span id="empresaInv"></span></h2>
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr><th>Setor</th><th>Risco</th><th>Prob.</th><th>Sever.</th><th>Nível</th></tr>
+            </thead>
+            <tbody id="riskTable">
+                <tr>
+                    <td>Geral</td>
+                    <td>Acidente de Trajeto</td>
+                    <td>Média</td>
+                    <td>Média</td>
+                    <td><span class="badge" style="background:orange;">MODERADO</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button style="width:100%; padding:15px; margin-top:20px; background:transparent; border:1px solid var(--green); color:var(--green); border-radius:8px;" onclick="addRow()">+ ADICIONAR LINHA DE RISCO</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaInv').innerText = data.nome;
+        }
+        function addRow() {
+            const row = `<tr><td><input type="text" style="width:40px"></td><td><input type="text" style="width:60px"></td><td>-</td><td>-</td><td><span class="badge high">ALTO</span></td></tr>`;
+            document.getElementById('riskTable').innerHTML += row;
+        }
+    </script>
+</body>
+</html>

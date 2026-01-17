@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Permissão de Trabalho (PT)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --border: #30363d; --neon-green: #39ff14; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--neon-green); padding: 15px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.2rem; }
+        .card { background: var(--surf); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .checklist-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.8rem; }
+        input[type="checkbox"] { accent-color: var(--neon-green); width: 18px; height: 18px; }
+        .btn-pt { background: var(--neon-green); color: black; border: none; padding: 15px; width: 100%; border-radius: 10px; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><div class="title">P.T. AUTORIZAÇÃO</div><small>Trabalho em Risco</small></div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <label style="color:var(--neon-green); font-size:0.7rem; font-weight:bold; display:block; margin-bottom:10px;">CHECKLIST DE SEGURANÇA</label>
+        <div class="checklist-item"><input type="checkbox"> Fontes de energia bloqueadas (LOTO)?</div>
+        <div class="checklist-item"><input type="checkbox"> Área isolada e sinalizada?</div>
+        <div class="checklist-item"><input type="checkbox"> Equipe com ASO APTO e treinada?</div>
+        <div class="checklist-item"><input type="checkbox"> Equipamentos de resgate no local?</div>
+    </div>
+
+    <div class="card">
+        <label style="color:var(--neon-green); font-size:0.7rem; font-weight:bold;">VALDADE</label>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:5px;">
+            <input type="time" value="08:00" style="background:#000; color:white; border:none; padding:10px; border-radius:5px;">
+            <input type="time" value="18:00" style="background:#000; color:white; border:none; padding:10px; border-radius:5px;">
+        </div>
+    </div>
+
+    <button class="btn-pt" onclick="alert('Permissão de Trabalho Emitida e Assinada Digitalmente!')">LIBERAR ATIVIDADE</button>
+</body>
+</html>

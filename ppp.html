@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - PPP Digital Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0d1117; --surf: #161b22; --border: #30363d; --neon-indigo: #6610f2; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--neon-indigo); padding: 15px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { font-family: 'Orbitron'; color: var(--neon-indigo); font-size: 1.2rem; }
+        .section-box { background: var(--surf); border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        label { font-size: 0.7rem; color: #888; display: block; margin-bottom: 3px; }
+        input, select { width: 100%; padding: 10px; background: #000; border: 1px solid var(--border); color: white; border-radius: 5px; margin-bottom: 10px; box-sizing: border-box; }
+        .btn-action { background: var(--neon-indigo); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-family: 'Orbitron'; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><div class="title">PPP DIGITAL</div><small>S-2240 Histórico Laboral</small></div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="section-box">
+        <h3>Seção I - Dados Empresa/Trabalhador</h3>
+        <label>NOME DA EMPRESA</label>
+        <input type="text" id="empresaPpp" readonly>
+        <label>NOME DO TRABALHADOR</label>
+        <input type="text" placeholder="Nome Completo">
+        <label>CPF</label>
+        <input type="text" placeholder="000.000.000-00">
+    </div>
+
+    <div class="section-box">
+        <h3>Seção II - Registros Ambientais</h3>
+        <label>Agente Nocivo</label>
+        <select><option>Ruído Contínuo</option><option>Químico (Benzeno)</option><option>Ausência de Agentes</option></select>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <div><label>EPI Eficaz?</label><select><option>Sim</option><option>Não</option></select></div>
+            <div><label>EPC Eficaz?</label><select><option>Sim</option><option>Não</option></select></div>
+        </div>
+    </div>
+
+    <button class="btn-action" onclick="alert('PPP Sincronizado com LTCAT e eSocial.')">GERAR PPP (PDF)</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaPpp').value = data.razao;
+        }
+    </script>
+</body>
+</html>

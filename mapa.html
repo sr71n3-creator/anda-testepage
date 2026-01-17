@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Mapa de Riscos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0a0b10; color: white; font-family: sans-serif; margin: 0; padding: 15px; text-align: center; }
+        .logo { font-family: 'Orbitron'; font-size: 1.5rem; background: linear-gradient(90deg, #bd34fe, #00ff9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        .map-area { width: 100%; height: 350px; background: #111; border: 2px dashed #333; border-radius: 15px; position: relative; margin: 20px 0; overflow: hidden; background-image: radial-gradient(#222 1px, transparent 1px); background-size: 20px 20px; }
+        .risk-circle { position: absolute; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.7rem; color: black; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .r-green { background: #00ff9d; } .r-red { background: #ff3e3e; } .r-brown { background: #8b4513; }
+        .legend { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="logo">ANDA MAPS</div>
+    <div id="cia" style="color: #00ff9d; font-weight: bold; margin-bottom: 10px;"></div>
+
+    <div class="map-area">
+        <div class="risk-circle r-green" style="width:50px; height:50px; top:20%; left:10%;">FÍSICO</div>
+        <div class="risk-circle r-red" style="width:30px; height:30px; top:60%; left:70%;">QUIM</div>
+        <div class="risk-circle r-brown" style="width:40px; height:40px; top:40%; left:40%;">BIO</div>
+    </div>
+
+    <div class="legend">
+        <span>🟢 Físico</span><span>🔴 Químico</span><span>🟤 Biológico</span><span>🟡 Ergonômico</span><span>🔵 Acidentes</span>
+    </div>
+    
+    <button onclick="window.print()" style="margin-top:20px; padding:15px; background:#00ff9d; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">IMPRIMIR PARA FIXAÇÃO</button>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('anda_current_company'));
+        if(data) document.getElementById('cia').innerText = data.razao;
+    </script>
+</body>
+</html>

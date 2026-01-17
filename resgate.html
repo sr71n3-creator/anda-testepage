@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Plano de Resgate Profissional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --rescue-orange: #ff4500; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--rescue-orange); padding: 15px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .title { font-family: 'Orbitron'; color: var(--rescue-orange); font-size: 1.1rem; }
+        .card { background: #1a1c23; border-radius: 12px; padding: 15px; margin-bottom: 15px; border-left: 5px solid var(--rescue-orange); }
+        .kit-list { font-size: 0.8rem; line-height: 1.6; }
+        .timer { font-family: 'Orbitron'; color: var(--rescue-orange); font-size: 1.5rem; display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div><div class="title">PLANO DE RESGATE</div><small>Emergência NR-35/33</small></div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <label style="color:var(--rescue-orange); font-size:0.7rem; font-weight:bold;">CENÁRIO DE RISCO</label>
+        <select style="width:100%; padding:10px; background:#000; color:white; border:1px solid #444; margin-top:5px; border-radius:5px;">
+            <option>Queda de Altura com Suspensão Inerte</option>
+            <option>Mal súbito em Espaço Confinado</option>
+        </select>
+    </div>
+
+    <div class="card">
+        <label style="color:var(--rescue-orange); font-size:0.7rem; font-weight:bold;">KIT DE RESGATE</label>
+        <div class="kit-list">
+            <input type="checkbox" checked> Tripé de Resgate / Monopé<br>
+            <input type="checkbox" checked> Sistema de Polias 4:1<br>
+            <input type="checkbox"> Maca Envelope (Sked)
+        </div>
+    </div>
+
+    <div style="background:rgba(255, 69, 0, 0.2); padding:15px; border-radius:8px; border:1px solid var(--rescue-orange); text-align:center;">
+        <small>TEMPO ESTIMADO DE RESPOSTA (T.E.R.)</small>
+        <span class="timer">00:08:45</span>
+        <button onclick="alert('Equipe de Resposta Acionada via Rádio/App!')" style="background:var(--rescue-orange); color:white; border:none; padding:10px; border-radius:5px; font-weight:bold; cursor:pointer;">ACIONAR EQUIPE</button>
+    </div>
+</body>
+</html>

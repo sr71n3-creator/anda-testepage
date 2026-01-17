@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - LTCAT Previdenciário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --orange: #ff9d00; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding: 15px; }
+        .header { border-bottom: 2px solid var(--orange); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; font-size: 1.2rem; background: linear-gradient(90deg, #bd34fe, #00ff9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        h3 { font-size: 0.8rem; color: var(--orange); text-transform: uppercase; margin: 0 0 15px 0; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; background: #0d1117; border: 1px solid #333; color: white; border-radius: 8px; box-sizing: border-box; }
+        .btn-gen { background: var(--orange); color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / LTCAT</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Conclusão Previdenciária</h3>
+        <input type="text" id="razao" readonly style="border-color: var(--orange);">
+        <label style="font-size:0.7rem; color:#888;">Código GFIP Sugerido:</label>
+        <select>
+            <option>01 - Sem Aposentadoria Especial</option>
+            <option>02 - Especial 15 anos</option>
+            <option>03 - Especial 20 anos</option>
+            <option>04 - Especial 25 anos</option>
+        </select>
+        <textarea placeholder="Justificativa Técnica da Exposição..." style="width:100%; height:80px; background:#0d1117; color:white; border:1px solid #333; border-radius:8px; padding:10px;"></textarea>
+    </div>
+
+    <button class="btn-gen" onclick="alert('LTCAT Gerado para eSocial S-2240')">FINALIZAR DOCUMENTO</button>
+
+    <script>
+        window.onload = () => {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('razao').value = data.razao;
+        }
+    </script>
+</body>
+</html>

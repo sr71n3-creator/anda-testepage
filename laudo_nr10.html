@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Laudo Elétrico NR-10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --primary: #00ff9d; --yellow: #ffea00; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding: 15px; }
+        .header { border-bottom: 2px solid var(--yellow); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; font-size: 1.2rem; background: linear-gradient(90deg, #bd34fe, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        h3 { font-size: 0.8rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 15px 0; }
+        .inspect-row { display: flex; justify-content: space-between; padding: 12px; background: #0d1117; border-radius: 8px; margin-bottom: 8px; border: 1px solid #222; }
+        input[type="checkbox"] { transform: scale(1.5); accent-color: var(--yellow); }
+        .btn-save { background: var(--yellow); color: black; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / NR-10</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Identificação da Unidade</h3>
+        <input type="text" id="empresaNr10" readonly style="width: 100%; background: transparent; border: none; color: var(--yellow); font-size: 1.1rem; font-weight: bold;">
+    </div>
+
+    <div class="card">
+        <h3>Checklist Técnico de Instalações</h3>
+        <div class="inspect-row"><span>Esquemas Unifilares Atualizados?</span><input type="checkbox"></div>
+        <div class="inspect-row"><span>Prontuário de Instalações Organizado?</span><input type="checkbox"></div>
+        <div class="inspect-row"><span>Aterramento Medido e Laudo Válido?</span><input type="checkbox"></div>
+        <div class="inspect-row"><span>EPIs/EPCs Dielétricos Testados?</span><input type="checkbox"></div>
+    </div>
+
+    <button class="btn-save" onclick="alert('Laudo de Conformidade NR-10 salvo!')">EMITIR LAUDO TÉCNICO</button>
+
+    <script>
+        window.onload = () => {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaNr10').value = data.razao;
+        }
+    </script>
+</body>
+</html>

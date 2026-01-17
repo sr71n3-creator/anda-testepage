@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ANDA - CAT eSocial</title>
+    <style>
+        body { background: #0a0b10; color: white; font-family: sans-serif; padding: 20px; }
+        .form-cat { background: #161b22; padding: 20px; border-radius: 15px; border: 1px solid #ff6a00; }
+        input, select, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #333; background: #0d1117; color: white; }
+        .header-cat { color: #ff6a00; font-weight: bold; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header-cat">S-2210 - COMUNICAÇÃO DE ACIDENTE DE TRABALHO</div>
+    <div class="form-cat">
+        <label>Empresa Empregadora:</label>
+        <input type="text" id="catEmpresa" readonly>
+        
+        <label>Data do Ocorrido:</label>
+        <input type="date">
+        
+        <label>Tipo de Acidente:</label>
+        <select>
+            <option>Típico</option>
+            <option>Trajeto</option>
+            <option>Doença Ocupacional</option>
+        </select>
+
+        <label>Descrição do Agente Causador:</label>
+        <textarea rows="4" placeholder="Ex: Queda de mesmo nível em piso molhado..."></textarea>
+        
+        <button onclick="alert('Protocolo gerado!')" style="width:100%; padding:15px; background:#ff6a00; border:none; color:white; font-weight:bold; cursor:pointer;">EMITIR CAT DIGITAL</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('catEmpresa').value = data.nome;
+        }
+    </script>
+</body>
+</html>

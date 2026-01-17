@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Laudo Insalubridade</title>
+    <style>
+        :root { --bg: #0a0b10; --ins: #eaff00; --surf: #1a1a10; }
+        body { background: var(--bg); color: white; font-family: sans-serif; padding: 15px; }
+        .header { border-bottom: 2px solid var(--ins); padding-bottom: 10px; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; color: var(--ins); }
+        .card { background: var(--surf); border: 1px solid #330; padding: 20px; border-radius: 12px; }
+        select, input { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #440; color: white; border-radius: 5px; }
+        .resumo { margin-top: 20px; padding: 15px; background: rgba(234, 255, 0, 0.1); border-radius: 8px; border-left: 5px solid var(--ins); }
+    </style>
+</head>
+<body>
+    <div class="header">NR-15 - LAUDO DE INSALUBRIDADE</div>
+    <div class="card">
+        <label>Agente Físico/Químico:</label>
+        <select>
+            <option>Ruído (Anexo 1)</option>
+            <option>Calor (Anexo 3)</option>
+            <option>Químicos (Anexo 11)</option>
+            <option>Biológicos (Anexo 14)</option>
+        </select>
+        <label>Intensidade/Concentração:</label>
+        <input type="text" placeholder="Ex: 87.5 dB(A)">
+        <label>EPI Neutraliza?</label>
+        <select><option>Sim</option><option>Não</option></select>
+    </div>
+    
+    <div class="resumo">
+        <strong>Parecer Técnico:</strong>
+        <p id="parecer">Aguardando medições para a empresa <span id="empresaIns" style="color:var(--ins)">...</span></p>
+    </div>
+
+    <button style="width:100%; padding:18px; background:var(--ins); color:black; border:none; border-radius:10px; font-weight:bold; margin-top:20px;">GERAR LAUDO TÉCNICO</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaIns').innerText = data.nome;
+        }
+    </script>
+</body>
+</html>

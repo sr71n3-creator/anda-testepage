@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - P.C.A.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --surf: #161b22; --purple: #bd34fe; --text: #f0f6fc; }
+        body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; padding: 15px; margin: 0; }
+        .header { border-bottom: 2px solid var(--purple); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Orbitron'; color: var(--purple); font-size: 1.2rem; }
+        .card { background: var(--surf); border: 1px solid #333; border-radius: 12px; padding: 20px; margin-top: 15px; }
+        .audio-bar { display: flex; gap: 5px; height: 50px; align-items: flex-end; margin: 15px 0; }
+        .bar { flex: 1; background: var(--purple); opacity: 0.5; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">ANDA / P.C.A.</div>
+        <a href="index.html" style="color:#666; text-decoration:none; font-size:0.8rem;">↩ HUB</a>
+    </div>
+
+    <div class="card">
+        <h3>Monitoramento de Ruído</h3>
+        <p style="font-size:0.8rem;">Gráfico de Tendência (Audiometria):</p>
+        <div class="audio-bar">
+            <div class="bar" style="height: 20%"></div><div class="bar" style="height: 40%"></div><div class="bar" style="height: 35%"></div><div class="bar" style="height: 60%"></div><div class="bar" style="height: 25%"></div>
+        </div>
+        <input type="text" placeholder="Funcionário" style="width:100%; padding:10px; background:#000; border:1px solid #333; color:white;">
+    </div>
+
+    <button style="width:100%; padding:18px; background:var(--purple); color:white; border:none; border-radius:10px; font-weight:bold; font-family:'Orbitron'; margin-top:20px;">GERAR RELATÓRIO PCA</button>
+</body>
+</html>

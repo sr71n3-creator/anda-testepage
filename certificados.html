@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Certificados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0b10; --gold: #d4af37; --surf: #161b22; }
+        body { background: var(--bg); color: white; font-family: 'Roboto', sans-serif; padding: 20px; }
+        .cert-card { background: var(--surf); border: 2px solid var(--gold); border-radius: 15px; padding: 30px; text-align: center; position: relative; }
+        .logo-anda { font-family: 'Orbitron'; font-size: 1.5rem; background: linear-gradient(90deg, #bd34fe, #00ff9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        input { width: 100%; border: none; border-bottom: 1px solid #444; background: transparent; color: white; text-align: center; padding: 10px; margin: 15px 0; font-size: 1.1rem; }
+        .seal { width: 70px; height: 70px; background: var(--gold); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; font-size: 0.6rem; }
+        .btn-gen { background: var(--gold); color: black; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-family: 'Orbitron'; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="cert-card">
+        <div class="logo-anda">ANDA SST</div>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">CERTIFICAMOS QUE O COLABORADOR:</p>
+        <input type="text" placeholder="NOME DO ALUNO">
+        <p style="font-size: 0.8rem; color: #888;">CONCLUIU COM ÊXITO O TREINAMENTO DE:</p>
+        <select style="width:100%; background: #000; color: gold; padding: 10px; border: 1px solid var(--gold);">
+            <option>NR-35 - TRABALHO EM ALTURA</option>
+            <option>NR-33 - ESPAÇO CONFINADO</option>
+            <option>NR-10 - SEGURANÇA EM ELÉTRICA</option>
+            <option>NR-18 - SEGURANÇA NA CONSTRUÇÃO</option>
+        </select>
+        <div class="seal">ANDA<br>QUALIDADE<br>PETROBRAS</div>
+        <div style="font-size: 0.7rem; margin-top: 10px;">VALIDADO POR: <span id="empresaCert" style="color: #00ff9d;"></span></div>
+    </div>
+    <button class="btn-gen" onclick="window.print()">IMPRIMIR CERTIFICADO PDF</button>
+
+    <script>
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('anda_current_company'));
+            if(data) document.getElementById('empresaCert').innerText = data.nome;
+        }
+    </script>
+</body>
+</html>
