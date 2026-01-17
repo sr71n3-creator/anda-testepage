@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDA - Sistema de Engenharia SST Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0b10; --surface: #161b22; --primary-neon: #00ff9d; 
+            --secondary-neon: #bd34fe; --text-main: #f0f6fc; --border: #30363d;
+        }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-dark); color: var(--text-main); margin: 0; padding-bottom: 50px; }
+        header { background: rgba(16, 20, 25, 0.95); border-bottom: 1px solid var(--border); padding: 20px; text-align: center; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; background: linear-gradient(90deg, var(--secondary-neon), var(--primary-neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        
+        /* BUSCA CNPJ */
+        .search-card { background: var(--surface); padding: 30px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        label { font-size: 0.75rem; color: var(--primary-neon); font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
+        input { width: 100%; padding: 15px; background: #050505; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 1rem; margin-top: 10px; margin-bottom: 20px; box-sizing: border-box; }
+        
+        .btn-main { width: 100%; padding: 18px; background: linear-gradient(90deg, var(--secondary-neon), #8a2be2); color: white; border: none; border-radius: 8px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(189, 52, 254, 0.4); }
+
+        #resultArea { display: none; margin-top: 5px; padding-top: 25px; border-top: 1px solid #333; }
+        .btn-confirm { background: var(--primary-neon); color: #000; margin-top: 10px; }
+
+        /* GRID DE MÓDULOS */
+        .category-label { font-family: 'Orbitron'; font-size: 0.85rem; color: var(--primary-neon); margin: 40px 0 15px 0; display: block; border-left: 4px solid var(--secondary-neon); padding-left: 10px; }
+        .grid-modules { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .module-item { 
+            background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: 12px; 
+            text-align: center; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .module-item:hover { border-color: var(--primary-neon); background: #1c2128; transform: translateY(-5px); }
+        .module-item i { font-size: 1.8rem; }
+        .module-item span { font-size: 0.9rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+<header><div class="logo">ANDA S.S.T</div></header>
+
+<div class="container">
+    <div class="search-card">
+        <label>CNPJ da Empresa (Consulta BrasilAPI)</label>
+        <input type="text" id="cnpjInput" placeholder="00.000.000/0000-00">
+        <button class="btn-main" id="btnAction" onclick="buscarCNPJ()">CONSULTAR BASE DE DADOS</button>
+
+        <div id="resultArea">
+            <label>Razão Social</label>
+            <input type="text" id="resRazao">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                <div><label>CNAE</label><input type="text" id="resCnae"></div>
+                <div><label>Grau de Risco</label><input type="text" id="resRisco" value="3"></div>
+            </div>
+            <button class="btn-main btn-confirm" onclick="validarAcesso()">VINCULAR EMPRESA AO SISTEMA</button>
+        </div>
+    </div>
+
+    <span class="category-label">Documentação Técnica (NR-01, 07, 09)</span>
+    <div class="grid-modules">
+        <div class="module-item" onclick="abrir('inventario')"><i>📊</i><span>Inventário de Riscos</span></div>
+        <div class="module-item" onclick="abrir('plano_acao')"><i>📅</i><span>Plano de Ação 5W2H</span></div>
+        <div class="module-item" onclick="abrir('pcmso')"><i>🩺</i><span>PCMSO (NR-07)</span></div>
+        <div class="module-item" onclick="abrir('relatorio_pcmso')"><i>📈</i><span>Relatório Anual</span></div>
+        <div class="module-item" onclick="abrir('mapa')"><i>📍</i><span>Mapa de Riscos</span></div>
+    </div>
+
+    <span class="category-label">Laudos Previdenciários e Adicionais</span>
+    <div class="grid-modules">
+        <div class="module-item" onclick="abrir('ltcat')"><i>⚖️</i><span>LTCAT</span></div>
+        <div class="module-item" onclick="abrir('ppp')"><i>📄</i><span>PPP Digital</span></div>
+        <div class="module-item" onclick="abrir('insalubridade')"><i>🧪</i><span>Insalubridade (NR-15)</span></div>
+        <div class="module-item" onclick="abrir('periculosidade')"><i>⚡</i><span>Periculosidade (NR-16)</span></div>
+        <div class="module-item" onclick="abrir('aet')"><i>🪑</i><span>Ergonomia (AET)</span></div>
+    </div>
+
+    <span class="category-label">Rotinas Operacionais e Treinamentos</span>
+    <div class="grid-modules">
+        <div class="module-item" onclick="abrir('aso')"><i>📝</i><span>Emissor de ASO</span></div>
+        <div class="module-item" onclick="abrir('epi')"><i>🦺</i><span>Entrega de EPI</span></div>
+        <div class="module-item" onclick="abrir('os')"><i>✍️</i><span>Ordem de Serviço</span></div>
+        <div class="module-item" onclick="abrir('cat')"><i>🚨</i><span>Emissor de CAT</span></div>
+        <div class="module-item" onclick="abrir('certificados')"><i>🎓</i><span>Certificados</span></div>
+    </div>
+
+    <span class="category-label">Programas de Riscos Específicos</span>
+    <div class="grid-modules">
+        <div class="module-item" onclick="abrir('nr12')"><i>⚙️</i><span>Segurança em Máquinas</span></div>
+        <div class="module-item" onclick="abrir('laudo_nr10')"><i>🔌</i><span>Prontuário NR-10</span></div>
+        <div class="module-item" onclick="abrir('nr20')"><i>🔥</i><span>Líquidos Inflamáveis</span></div>
+        <div class="module-item" onclick="abrir('pgrtr')"><i>🚜</i><span>PGR Rural (NR-31)</span></div>
+        <div class="module-item" onclick="abrir('radiologia')"><i>☢️</i><span>Radioproteção</span></div>
+    </div>
+
+    <span class="category-label">Permissões e Resposta a Emergências</span>
+    <div class="grid-modules">
+        <div class="module-item" onclick="abrir('apr')"><i>🛡️</i><span>APR Industrial</span></div>
+        <div class="module-item" onclick="abrir('pt')"><i>🔓</i><span>Permissão de Trabalho</span></div>
+        <div class="module-item" onclick="abrir('resgate')"><i>🚁</i><span>Plano de Resgate</span></div>
+        <div class="module-item" onclick="abrir('ppr')"><i>🎭</i><span>PPR Respiratório</span></div>
+        <div class="module-item" onclick="abrir('pca')"><i>👂</i><span>PCA Auditivo</span></div>
+    </div>
+</div>
+
+<script>
+    async function buscarCNPJ() {
+        const cnpj = document.getElementById('cnpjInput').value.replace(/\D/g, '');
+        if (cnpj.length !== 14) return alert("Digite os 14 números do CNPJ.");
+        
+        const btn = document.getElementById('btnAction');
+        btn.innerText = "⏳ CONSULTANDO BRASILAPI...";
+
+        try {
+            const res = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`);
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            
+            document.getElementById('resultArea').style.display = 'block';
+            document.getElementById('resRazao').value = data.razao_social || "";
+            document.getElementById('resCnae').value = data.cnae_fiscal || "";
+            btn.innerText = "✅ BUSCA CONCLUÍDA";
+        } catch (e) {
+            alert("Erro na BrasilAPI. Preencha os dados manualmente para continuar.");
+            document.getElementById('resultArea').style.display = 'block';
+            btn.innerText = "⚠️ MODO MANUAL ATIVADO";
+        }
+    }
+
+    function validarAcesso() {
+        const rz = document.getElementById('resRazao').value;
+        if(!rz) return alert("Preencha a Razão Social!");
+
+        const info = {
+            razao: rz,
+            razaoSocial: rz, // Compatibilidade
+            cnpj: document.getElementById('cnpjInput').value,
+            cnae: document.getElementById('resCnae').value,
+            risco: document.getElementById('resRisco').value,
+            riscosBase: "Ruído, Ergonômico, Acidentes" // Padrão inicial
+        };
+
+        // SALVA NAS DUAS CHAVES PARA QUE TODOS OS 22 ARQUIVOS FUNCIONEM
+        localStorage.setItem('anda_current_company', JSON.stringify(info));
+        localStorage.setItem('anda_company_data', JSON.stringify(info));
+        
+        alert("EMPRESA " + rz + " VINCULADA COM SUCESSO!");
+    }
+
+    function abrir(p) {
+        if(!localStorage.getItem('anda_current_company')) {
+            alert("Valide o CNPJ antes de acessar os módulos.");
+            return;
+        }
+        window.location.href = p + ".html";
+    }
+</script>
+</body>
+</html>
